@@ -6,7 +6,7 @@ following docs.
 
 ## Skills
 
-### `instrument-with-waxell`
+### `instrument-with-waxell-observe`
 
 Walks Claude through adding Waxell observability to a Python agent:
 
@@ -21,7 +21,7 @@ Walks Claude through adding Waxell observability to a Python agent:
 **Install:**
 
 ```bash
-npx degit waxell-ai/claude-skills/instrument-with-waxell ~/.claude/skills/instrument-with-waxell
+npx degit waxell-ai/claude-skills/instrument-with-waxell-observe ~/.claude/skills/instrument-with-waxell-observe
 ```
 
 Then open Claude Code in your agent's repo and say:

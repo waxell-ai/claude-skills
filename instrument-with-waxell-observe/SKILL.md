@@ -1,5 +1,5 @@
 ---
-name: instrument-with-waxell
+name: instrument-with-waxell-observe
 description: Add Waxell observability to a Python agent — install the SDK, configure the wax CLI, drop in the two-line decorator pattern, pull a run to verify, escalate to handler/context only if a real gap shows up, then walk the user through one starter governance policy. Use when the user says "instrument this with waxell", "wax this up", "add waxell observability", "set up tracing on this agent", "hook this agent into waxell", or asks for telemetry on a Python agent file. Built around Occam's razor — the 2-line decorator is the default and the goal; everything else is escalation only when the trace shows it's needed.
 ---
 
@@ -17,7 +17,7 @@ Trigger phrases:
 - "add waxell observability to <file>"
 - "set up tracing / telemetry on this agent"
 - "hook this agent into waxell"
-- "/instrument-with-waxell" (direct invocation)
+- "/instrument-with-waxell-observe" (direct invocation)
 
 Trigger context (no phrase needed):
 - User opens a Python file with an agent loop / `openai.AsyncOpenAI()` /
