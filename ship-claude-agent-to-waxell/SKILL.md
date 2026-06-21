@@ -108,16 +108,16 @@ To run the agent **as a specific teammate's end-user**, with that end-user's own
        --email alice@acme.com --display-name "Alice"
    wax -p <profile> end-users lookup alice
    ```
-2. **Set that end-user's secrets** (their BYO LLM key, their tool token). There's no `wax` subcommand for sub-user secrets yet — use the API with the tenant key (write-only, encrypted at rest):
+2. **Set that end-user's secrets** (their BYO LLM key, their tool token) — one
+   command each. Write-only + encrypted at rest; you set/rotate but never read
+   a value back:
    ```bash
-   curl -s -X POST "https://api.waxell.dev/api/waxell/v1/sub-users/alice/secrets/" \
-     -H "X-Wax-Key: $WAX_API_KEY" -H "Content-Type: application/json" \
-     -d '{"key":"ANTHROPIC_API_KEY","value":"sk-ant-…"}'
-   curl -s -X POST "https://api.waxell.dev/api/waxell/v1/sub-users/alice/secrets/" \
-     -H "X-Wax-Key: $WAX_API_KEY" -H "Content-Type: application/json" \
-     -d '{"key":"GITHUB_TOKEN","value":"ghp_…"}'
+   wax -p <profile> end-users set-secret alice ANTHROPIC_API_KEY sk-ant-…
+   wax -p <profile> end-users set-secret alice GITHUB_TOKEN ghp_…
+   wax -p <profile> end-users list-secrets alice        # keys only, never values
    ```
-   (DX gap to flag: a `wax end-users set-secret <id> <key> <value>` would make this one command.)
+   `set-secret` upserts (create or rotate). Use `--agent <name>` to scope a
+   secret to one agent; the default applies to all of the tenant's agents.
 3. **Run AS that end-user** — the tenant's app stamps a signed `_sub_user_identity` on the signal payload. Stamp BOTH `sub_user_id` and `user_id` (the audit layer drops the identity if either is missing):
    ```json
    POST /api/v1/signals/my_agent_request/

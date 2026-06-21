@@ -106,9 +106,9 @@ wax -p acme_prod end-users create --tenant-sub-user-id alice \
 are write-only and encrypted at rest — you set/rotate but never read them back:
 
 ```bash
-curl -s -X POST "https://api.waxell.dev/api/waxell/v1/sub-users/alice/secrets/" \
-  -H "X-Wax-Key: $WAX_API_KEY" -H "Content-Type: application/json" \
-  -d '{"key":"ANTHROPIC_API_KEY","value":"sk-ant-…"}'
+wax -p acme_prod end-users set-secret alice ANTHROPIC_API_KEY sk-ant-…
+wax -p acme_prod end-users set-secret alice GITHUB_TOKEN ghp_…
+wax -p acme_prod end-users list-secrets alice        # keys only, never values
 ```
 
 **c) Run as Alice** — your backend stamps a signed `_sub_user_identity` on the
