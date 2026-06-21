@@ -30,6 +30,34 @@ Then open Claude Code in your agent's repo and say:
 instrument this with waxell
 ```
 
+### `ship-claude-agent-to-waxell`
+
+Takes a `claude_agent_sdk` / Claude Code agent you built locally and publishes
+it to Waxell so your whole team can use it in prod — governed, observable, and
+optionally per-user:
+
+1. Scaffolds a `waxell.yaml` from your local agent (system prompt, model, tools).
+2. Validates and publishes it with `wax push` (`--include-source` so it travels).
+3. Runs it through the signal endpoint and verifies via the run's Setup span.
+4. (Optional) Adds a per-end-user tool integration (a "connect your X" domain).
+5. (Optional) Maps real end-users to per-user credentials (BYO LLM key + tokens)
+   resolved host-side — the model never sees a raw secret.
+
+See [`TUTORIAL.md`](./ship-claude-agent-to-waxell/TUTORIAL.md) for the manual
+walkthrough.
+
+**Install:**
+
+```bash
+npx degit waxell-ai/claude-skills/ship-claude-agent-to-waxell ~/.claude/skills/ship-claude-agent-to-waxell
+```
+
+Then open Claude Code in your agent's repo and say:
+
+```
+deploy this agent to Waxell
+```
+
 ## How skills work
 
 Claude Code auto-discovers any skill placed in `~/.claude/skills/<name>/SKILL.md`
