@@ -18,7 +18,7 @@ raw secret.
 ## Prerequisites
 
 ```bash
-pip install waxell-runtime         # ships the `wax` CLI
+pip install waxell         # ships the `wax` CLI
 wax login                          # or configure a profile
 wax whoami                         # ALWAYS verify tenant + identity first
 ```
@@ -138,4 +138,4 @@ overrides every shared default, and one user can never resolve another's.
 ## Links
 
 - [Waxell docs](https://waxell.ai/docs/)
-- [waxell-runtime on PyPI](https://pypi.org/project/waxell-runtime/)
+- [waxell on PyPI](https://pypi.org/project/waxell/)
